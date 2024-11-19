@@ -1,0 +1,11 @@
+FROM node:23.1.0-alpine
+
+
+
+COPY . .
+
+RUN npm install
+
+ENV DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
+
+CMD npx prisma migrate deploy && npm run test
