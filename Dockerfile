@@ -41,7 +41,8 @@ COPY package.json .
 
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/dist ./dist
-
+COPY prisma ./prisma/
+RUN npx prisma generate
 
 EXPOSE 8080
 
